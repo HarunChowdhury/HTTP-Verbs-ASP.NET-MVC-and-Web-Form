@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SelectedIndexChangedMVC.Models.Section>
+<table>
+  <tr>
+      <th>
+        Department Id
+    </th>    
+    <th>
+        Section Code
+    </th>  
+    <th>
+        Section Description
+    </th>  
+    <th>
+        Department Code
+    </th>  
+</tr>    
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+               @Html.DisplayFor(modelItem=>item.DepartmentId) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Code)
+            </td>
+
+        </tr>   
+    }
+    
+
+</table>

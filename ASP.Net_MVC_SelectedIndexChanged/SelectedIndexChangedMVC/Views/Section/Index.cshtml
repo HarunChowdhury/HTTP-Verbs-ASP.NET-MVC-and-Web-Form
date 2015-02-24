@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SelectedIndexChangedMVC.Models.Section>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function FillData(id) {
+        $("#section-data").load("Section/FilteredSection", { deptId: id });
+    }
+
+    $(function () {
+        $("#departmentId").change(function () {
+            var id = $("#departmentId").val();
+            FillData(id);
+        });
+    });
+</script>
+
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("departmentId", String.Empty)
+}
+<p>@Html.ActionLink("Create New", "Create")</p>
+<div id="section-data">
+    @Html.Partial("~/Views/Shared/_PartialFiltaringView.cshtml", Model)
+</div>
+
